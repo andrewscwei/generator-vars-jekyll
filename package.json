@@ -1,6 +1,6 @@
 {
   "name": "generator-vars-jekyll",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Jekyll web app with Gulp, Browserify, Sass and more.",
   "license": "MIT",
   "repository": {
