@@ -17,7 +17,7 @@ VARIANTE's Yeoman generator for a Jekyll app.
 - Bootstrap (optional)
 - jQuery (optional)
 
-If you are looking for [Modernizr](http://modernizr.com), we recommend manually configuring your custom build and put it in ```app/assets/vendor``` folder, then include ```/assets/vendor/vendor.js``` in your HTML.
+For [Modernizr](http://modernizr.com), manually configure your custom build and put it in ```app/assets/vendor``` folder, then include ```/assets/vendor/vendor.js``` in your HTML.
 
 ## Structure
 
