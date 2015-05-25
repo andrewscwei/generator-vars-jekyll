@@ -218,7 +218,7 @@ module.exports = yeoman.generators.Base.extend
 
         install:
         {
-            gems: function()
+            bundle: function()
             {
                 var done = this.async();
 
@@ -240,7 +240,7 @@ module.exports = yeoman.generators.Base.extend
                 });
             },
 
-            nodeModules: function()
+            npm: function()
             {
                 var done = this.async();
 
