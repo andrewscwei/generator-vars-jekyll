@@ -70,7 +70,7 @@ module.exports = yeoman.generators.Base.extend
 
                 if (!this.options['skip-welcome-message'])
                 {
-                    this.log(yosay('\'Allo \'allo! Out of the box I include Sass, Browserify, jQuery and a gulpfile.js to build your app.'));
+                    this.log(yosay('\'Allo \'allo! Out of the box I include Sass, Browserify and a gulpfile.js to build your app.'));
                 }
 
                 var prompts =
