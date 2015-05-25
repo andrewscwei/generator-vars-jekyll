@@ -98,8 +98,8 @@ gulp.task('videos', function()
  */
 gulp.task('fonts', function()
 {
-    return gulp.src(['.generated/assets/**/*.'+FONTS_PATTERN<% if (includeBootstrap) { %>, 'node_modules/bootstrap-sass/assets/**/*.'+FONTS_PATTERN<% } %>])
-        .pipe(gulp.dest('.tmp/assets'));
+    return gulp.src(['<%= paths.generated %>/assets/**/*.'+FONTS_PATTERN<% if (includeBootstrap) { %>, 'node_modules/bootstrap-sass/assets/**/*.'+FONTS_PATTERN<% } %>])
+        .pipe(gulp.dest('<%= paths.tmp %>/assets'));
 });
 
 /**
