@@ -32,8 +32,6 @@
     "sass",
     "browserify",
     "browser-sync",
-    "file-include",
-    "templating",
     "smacss"
   ],
   "dependencies": {
