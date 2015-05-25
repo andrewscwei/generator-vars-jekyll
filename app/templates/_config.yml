@@ -1,0 +1,59 @@
+source: <%= paths.src %>
+destination: <%= paths.build %>
+
+highlighter: pygments
+
+prose:
+    rooturl: '<%= paths.src %>'
+    media: '<%= paths.src %>/assets/images'
+    ignore:
+        -   index.html
+        -   404.html
+        -   500.html
+        -   _data
+        -   _includes
+        -   _layouts
+        -   apple-touch-icon-114x114.png
+        -   apple-touch-icon-57x57.png
+        -   apple-touch-icon-72x72.png
+        -   apple-touch-icon.png
+        -   favicon.ico
+        -   favicon.png
+        -   og-image.png
+        -   robots.txt
+        -   /app/assets/css
+        -   /app/assets/js
+        -   /app/assets/fonts
+        -   /app/assets/vendor
+        -   /app/assets/videos
+    metadata:
+        app/_posts: &metadata
+            -   name: 'title'
+                field:
+                    element: 'text'
+                    label: 'Title'
+                    help: 'This is the title which appears in the cover of the post. The title also appears as the tab name of the browser.'
+                    placeholder: 'Change the post title here'
+                    type: text
+
+            -   name: 'published'
+                field:
+                    element: 'checkbox'
+                    label: 'Specify whether this post is available on the live site.'
+                    help: 'Uncheck this if you do not want this post published for the time being. You can reenable this at a later time.'
+                    value: true
+
+        app/_drafts:
+            -   name: 'title'
+                field:
+                    element: 'text'
+                    label: 'Title'
+                    help: 'This is the title which appears in the cover of the post. The title also appears as the tab name of the browser.'
+                    placeholder: 'Change the post title here'
+                    type: text
+
+            -   name: 'published'
+                field:
+                    element: 'hidden'
+                    value: true
+
