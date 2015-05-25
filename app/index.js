@@ -8,23 +8,15 @@
 
 'use strict';
 
-// Import dependencies.
 var fs = require('fs');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
-/**
- * @module
- * Extend base Yeoman generator.
- */
 module.exports = yeoman.generators.Base.extend
 (
     {
-        /**
-         * Constructor.
-         */
         constructor: function()
         {
             yeoman.generators.Base.apply(this, arguments);
@@ -58,9 +50,6 @@ module.exports = yeoman.generators.Base.extend
             });
         },
 
-        /**
-         * Initializes the generator instance and sets up all instance properties.
-         */
         initializing: function()
         {
             this.pkg = require('../package.json');
@@ -73,9 +62,6 @@ module.exports = yeoman.generators.Base.extend
             };
         },
 
-        /**
-         * Prompts the user for other preferred features.
-         */
         prompting:
         {
             welcome: function()
@@ -159,9 +145,6 @@ module.exports = yeoman.generators.Base.extend
             }
         },
 
-        /**
-         * Writes project files to destination.
-         */
         writing:
         {
             skeleton: function()
@@ -233,9 +216,6 @@ module.exports = yeoman.generators.Base.extend
             }
         },
 
-        /**
-         * Performs npm installations.
-         */
         install:
         {
             gems: function()
