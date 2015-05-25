@@ -237,7 +237,7 @@ module.exports = yeoman.generators.Base.extend
                     }
 
                     done();
-                });
+                }.bind(this));
             },
 
             npm: function()
@@ -259,7 +259,7 @@ module.exports = yeoman.generators.Base.extend
                     }
 
                     done();
-                });
+                }.bind(this));
             }
         },
 

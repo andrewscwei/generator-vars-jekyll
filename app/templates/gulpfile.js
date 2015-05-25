@@ -17,8 +17,7 @@ var STYLES_PATTERN = '{css,scss}';
 var TEMPLATES_PATTERN = '{html,shtml,htm,html.erb,asp,php,md}';
 var DATA_PATTERN = '{json,yml,csv}';
 var FONTS_PATTERN = '{eot,svg,ttf,woff,woff2}';
-var EXTRAS_PATTERN = '{txt}';
-var FILE_EXCLUDE_PATTERN = '{psd,ai}';
+var EXTRAS_PATTERN = 'txt';
 
 // Load modules.
 var $ = require('gulp-load-plugins')();
