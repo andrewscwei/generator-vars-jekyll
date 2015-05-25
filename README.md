@@ -10,6 +10,7 @@ VARIANTE's Yeoman generator for a Jekyll app.
 - [Sass](http://sass-lang.com) with Scalable and Modular Architecture (SMACSS) setup
 - [Browserify](http://browserify.org)
 - [Sublime](http://www.sublimetext.com) project (optional)
+- [Heroku](http://heroku.com) setup
 
 ## Libraries
 
@@ -100,7 +101,7 @@ mkdir new-project-name && cd $_
 
 Generate the project:
 ```
-yo vars-webapp [app-name]
+yo vars-jekyll [app-name]
 ```
 
 For details on initial setup procedures of the project, see its generated ```README.md``` file.
