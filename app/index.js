@@ -227,17 +227,19 @@ module.exports = yeoman.generators.Base.extend
                     this.log('\nSkipping gem dependency installation. You will have to manually run ' + chalk.yellow.bold('bundle install --path vendor/bundle') + '.');
                     done();
                 }
-
-                this.log('\nInstalling gems for you using your ' + chalk.yellow.bold('Gemfile') + '...');
-                this.spawnCommand('bundle', ['install', '--path', 'vendor/bundle']).on('exit', function(code)
+                else
                 {
-                    if (code !== 0)
+                    this.log('\nInstalling gems for you using your ' + chalk.yellow.bold('Gemfile') + '...');
+                    this.spawnCommand('bundle', ['install', '--path', 'vendor/bundle']).on('exit', function(code)
                     {
-                        this.log('\n' + chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('bundle install --path vendor/bundle') + chalk.red('.'));
-                    }
+                        if (code !== 0)
+                        {
+                            this.log('\n' + chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('bundle install --path vendor/bundle') + chalk.red('.'));
+                        }
 
-                    done();
-                }.bind(this));
+                        done();
+                    }.bind(this));
+                }
             },
 
             npm: function()
@@ -249,17 +251,19 @@ module.exports = yeoman.generators.Base.extend
                     this.log('\nSkipping node dependency installation. You will have to manually run ' + chalk.yellow.bold('npm install') + '.');
                     done();
                 }
-
-                this.log('\nInstalling node modules for you using your ' + chalk.yellow.bold('package.json') + '...');
-                this.spawnCommand('npm', ['install', '--ignore-scripts']).on('exit', function(code)
+                else
                 {
-                    if (code !== 0)
+                    this.log('\nInstalling node modules for you using your ' + chalk.yellow.bold('package.json') + '...');
+                    this.spawnCommand('npm', ['install', '--ignore-scripts']).on('exit', function(code)
                     {
-                        this.log('\n' + chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('npm install') + chalk.red('.'));
-                    }
+                        if (code !== 0)
+                        {
+                            this.log('\n' + chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('npm install') + chalk.red('.'));
+                        }
 
-                    done();
-                }.bind(this));
+                        done();
+                    }.bind(this));
+                }
             }
         },
 
