@@ -25,6 +25,7 @@ var gulp = require('gulp');
 var spawn = require('child_process').spawn;
 var merge = require('merge-stream');
 var sequence = require('run-sequence');
+var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
 // Environment variables.
 var debug = function() { return $.util.env['debug'] || $.util.env['d'] || process.env.GULP_CONFIG_DEBUG; };
@@ -47,11 +48,11 @@ gulp.task('generate', function(callback)
 
     if (debug())
     {
-        proc = spawn('jekyll', ['build', '--drafts', '--destination=<%= paths.generated %>'], { stdio: 'inherit' });
+        proc = spawn(jekyll, ['build', '--drafts', '--destination=<%= paths.generated %>'], { stdio: 'inherit' });
     }
     else
     {
-        proc = spawn('jekyll', ['build', '--destination=<%= paths.generated %>'], { stdio: 'inherit' });
+        proc = spawn(jekyll, ['build', '--destination=<%= paths.generated %>'], { stdio: 'inherit' });
     }
 
     proc.on('exit', function(code)
