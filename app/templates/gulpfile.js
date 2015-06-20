@@ -34,7 +34,6 @@ var skipCSSO = function() { return $.util.env['skip-csso'] || $.util.env['sc'] |
 var skipUglify = function() { return $.util.env['skip-uglify'] || $.util.env['sj'] || debug(); };
 var skipRev = function() { return $.util.env['skip-rev'] || $.util.env['sr'] || debug(); };
 var skipMinifyHTML = function() { return $.util.env['skip-minify-html'] || $.util.env['sh'] || debug(); };
-var skipRev = function() { return $.util.env['skip-rev'] || $.util.env['sr'] || debug(); };
 
 /**
  * Runs the Jekyll build task to generate all the templates. These files are generated to the
@@ -115,7 +114,7 @@ gulp.task('styles', function()
     return merge
     (
         gulp.src('<%= paths.generated %>/assets/css/*.'+STYLES_PATTERN)
-            .pipe($.if(debug, $.sourcemaps.init()))
+            .pipe($.if(debug(), $.sourcemaps.init()))
             .pipe($.sass({
                 outputStyle: 'nested',
                 precision: 10,
@@ -124,7 +123,7 @@ gulp.task('styles', function()
             }))
             .pipe($.postcss([require('autoprefixer-core')({ browsers: ['last 2 version', 'ie 9'] })]))
             .pipe($.if(!skipCSSO(), $.csso()))
-            .pipe($.if(debug, $.sourcemaps.write()))
+            .pipe($.if(debug(), $.sourcemaps.write()))
             .pipe(gulp.dest('<%= paths.tmp %>/assets/css')),
         gulp.src(['<%= paths.generated %>/assets/vendor/**/*.css'])
             .pipe($.concat('vendor.css'))
@@ -161,9 +160,9 @@ gulp.task('scripts', function()
                         next(null, file);
                     });
             }))
-            .pipe($.if(debug, $.sourcemaps.init({ loadMaps: true })))
+            .pipe($.if(debug(), $.sourcemaps.init({ loadMaps: true })))
             .pipe($.if(!skipUglify(), $.uglify())).on('error', $.util.log)
-            .pipe($.if(debug, $.sourcemaps.write('./')))
+            .pipe($.if(debug(), $.sourcemaps.write('./')))
             .pipe(gulp.dest('<%= paths.tmp %>/assets/js')),
         gulp.src(['<%= paths.generated %>/assets/vendor/**/*.'+SCRIPTS_PATTERN])
             .pipe($.concat('vendor.js'))
