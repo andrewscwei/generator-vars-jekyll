@@ -121,7 +121,7 @@ module.exports = yeoman.generators.Base.extend
                             {
                                 name: 'Sublime',
                                 value: 'includeSublime',
-                                checked: true
+                                checked: false
                             },
                         ]
                     }
@@ -162,6 +162,7 @@ module.exports = yeoman.generators.Base.extend
                 this.copy('gitattributes', '.gitattributes');
                 this.copy('jshintrc', '.jshintrc');
                 this.copy('editorconfig', '.editorconfig');
+                this.copy('buildpacks', '.buildpacks');
                 this.copy('_config.yml', '_config.yml');
                 this.copy('app/robots.txt', this.paths.src+'/robots.txt');
 
