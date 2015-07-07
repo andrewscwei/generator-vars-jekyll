@@ -83,8 +83,7 @@ var watch = env['watch'] || env['w'];
 /**
  * @option
  *
- * Specifies the port which BrowserSync will use when serving the app locally. Note
- * that this value only affects the port that BrowserSync uses, not WEBrick (Rails server).
+ * Specifies the port which BrowserSync will use when serving the app locally.
  * This option is only available if you are executing a Gulp task that serves the app.
  * The default value is 9000.
  *
