@@ -124,11 +124,6 @@ yo vars-jekyll [app-name]
 
 For details on initial setup procedures of the project, see its generated ```README.md``` file.
 
-## Common Issues
-
-1. If ```node-sass``` is giving you errors, try rebuilding it by running ```$ npm rebuild node-sass```.
-2. If ```gulp images``` is failing due to some error in ```gulp-imagemin```, try reinstalling it.
-
 ## License
 
 This software is released under the [MIT License](http://opensource.org/licenses/MIT).
