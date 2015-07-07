@@ -9,9 +9,9 @@
  *  @param {Boolean} skip-rev
  */
 
- var config = require('./config');
- var gulp = require('gulp');
- var $revReplace = require('gulp-rev-replace');
+var config = require('./config');
+var gulp = require('gulp');
+var $revReplace = require('gulp-rev-replace');
 
 gulp.task('build', ['templates', 'static'], function()
 {
