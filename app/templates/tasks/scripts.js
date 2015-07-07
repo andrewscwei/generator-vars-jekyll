@@ -6,7 +6,7 @@
  * Compiles all JavaScript bundle files. This task assumes that all bundle files are located in /<%= paths.src %>/assets/js
  * and ignores all sub-directories. Watchify is used to speed up the rebundling process when watch is enabled.
  * Babelify is used to allow development in ES6 standards. Note that if this task is performed in production or
- * asset revisioning is intended, files will be deployed to ./.tmp instead to be staged for revisioning during the
+ * asset revisioning is intended, files will be deployed to /<%= paths.tmp %> instead to be staged for revisioning during the
  * 'static' task.
  *
  * @param {Boolean} debug
