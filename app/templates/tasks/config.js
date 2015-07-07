@@ -114,6 +114,7 @@ module.exports =
     sourcemaps: '{css.map,js.map}',
     styles:'{css,scss,sass}',
     templates: '{html,shtml,htm,html.erb,asp,php,md}',
+    extras: 'txt',
     data: '{json,yml,csv}',
     fonts: '{eot,svg,ttf,woff,woff2}'
   },
