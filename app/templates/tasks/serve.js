@@ -15,7 +15,6 @@ var browserSync = require('browser-sync');
 var config = require('./config');
 var gulp = require('gulp');
 var sequence = require('run-sequence');
-var spawn = require('child_process').spawn;
 var $util = require('gulp-util');
 
 gulp.task('serve', function()

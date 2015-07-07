@@ -13,7 +13,6 @@ var config = require('./config');
 var gulp = require('gulp');
 var $if = require('gulp-if');
 var $minifyHTML = require('gulp-minify-html');
-var $size = require('gulp-size');
 
 gulp.task('templates', function(callback)
 {
