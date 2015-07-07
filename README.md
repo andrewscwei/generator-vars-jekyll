@@ -9,8 +9,8 @@ VARIANTE's Yeoman generator for a Jekyll app.
 - [BrowserSync](http://www.browsersync.io) for rapid development
 - [Sass](http://sass-lang.com) with Scalable and Modular Architecture (SMACSS) setup
 - [Browserify](http://browserify.org)
-- [Babel](https://babeljs.io) to use ES6 JS standards
-- Watchify for quick Browserify builds
+- [Babel](https://babeljs.io) for coding in ES6 standards
+- Watchify for quick Browserify rebundling
 - [Heroku](http://heroku.com) setup
 
 ## Libraries
