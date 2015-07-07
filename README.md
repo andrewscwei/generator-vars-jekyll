@@ -69,6 +69,7 @@ For [Modernizr](http://modernizr.com), manually configure your custom build and 
 |   +-- scripts.js
 |   +-- serve.js
 |   +-- static.js
+|   +-- styles.js
 |   +-- templates.js
 |   +-- videos.js
 +-- test // mocha tests
