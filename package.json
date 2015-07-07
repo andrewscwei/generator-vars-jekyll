@@ -1,6 +1,6 @@
 {
     "name": "generator-vars-jekyll",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Jekyll web app + Gulp, Browserify, Babel, Sass and more.",
     "license": "MIT",
     "repository":
@@ -12,7 +12,7 @@
     {
         "name": "Andrew Wei <andrew@variante.io>"
     },
-    "homepage": "https://github.com/VARIANTE/grubbb.co#readme",
+    "homepage": "https://github.com/VARIANTE/generator-vars-jekyll#readme",
     "main": "app/index.js",
     "engines":
     {

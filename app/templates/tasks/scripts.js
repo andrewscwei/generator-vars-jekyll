@@ -1,8 +1,7 @@
 /* jshint strict:false */
 /**
- * grubbb.co
- *
- * (c) Grubbb, Inc.
+ *  <%= appname %><% if (appauthor !== '' || appauthoremail !== '') { %>
+ *  (c)<% if (appauthor !== '') { %> <%= appauthor %><% } %><% if (appauthoremail !== '') { %> <<%= appauthoremail %>><% } %><% } %>
  *
  * Compiles all JavaScript bundle files. This task assumes that all bundle files are located in /<%= paths.src %>/assets/js
  * and ignores all sub-directories. Watchify is used to speed up the rebundling process when watch is enabled.
