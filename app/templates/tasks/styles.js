@@ -19,6 +19,7 @@ var $if = require('gulp-if');
 var $postcss = require('gulp-postcss');
 var $sass = require('gulp-sass');
 var $sourcemaps = require('gulp-sourcemaps');
+var $util = require('gulp-util');
 
 gulp.task('styles', function()
 {
@@ -28,10 +29,13 @@ gulp.task('styles', function()
             .pipe($if(config.env.debug, $sourcemaps.init()))
             .pipe($sass({
                 outputStyle: 'nested',
-                precision: 10,
-                includePaths: ['.'],
-                onError: console.error.bind(console, 'Sass error:')
-            }))
+                includePaths: ['node_modules', config.paths.generated+'/assets/css']
+            })
+                .on('error', function(err)
+                {
+                  $util.log($util.colors.red('Sass error: ' + err.message));
+                  this.emit('end');
+                }))
             .pipe($postcss([autoprefixer({ browsers: ['last 2 version', 'ie 9'] })]))
             .pipe($if(!config.env.skipCSSO, $csso()))
             .pipe($if(config.env.debug, $sourcemaps.write()))
@@ -40,5 +44,5 @@ gulp.task('styles', function()
             .pipe($concat('vendor.css'))
             .pipe($if(!config.env.skipCSSO, $csso()))
             .pipe(gulp.dest(config.paths.tmp+'/assets/vendor'))
-    ) ;
+    );
 });
