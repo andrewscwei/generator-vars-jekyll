@@ -42,12 +42,6 @@ module.exports = yeoman.generators.Base.extend
                 desc: 'Skips the installation of dependencies',
                 type: Boolean
             });
-
-            this.option('skip-install-message',
-            {
-                desc: 'Skips the message after the installation of dependencies',
-                type: Boolean
-            });
         },
 
         initializing: function()
@@ -167,10 +161,23 @@ module.exports = yeoman.generators.Base.extend
                 this.copy('app/robots.txt', this.paths.src+'/robots.txt');
 
                 this.template('server.js');
-                this.template('gulpfile.js');
                 this.template('Gemfile');
                 this.template('package.json', 'package.json');
                 this.template('README.md', 'README.md');
+                this.template('gulpfile.js');
+                this.template('tasks/build.js');
+                this.template('tasks/clean.js');
+                this.template('tasks/config.js');
+                this.template('tasks/extras.js');
+                this.template('tasks/fonts.js');
+                this.template('tasks/generate.js');
+                this.template('tasks/images.js');
+                this.template('tasks/scripts.js');
+                this.template('tasks/serve.js');
+                this.template('tasks/static.js');
+                this.template('tasks/styles.js');
+                this.template('tasks/templates.js');
+                this.template('tasks/videos.js');
 
                 if (this.includeSublime)
                 {
@@ -214,6 +221,20 @@ module.exports = yeoman.generators.Base.extend
                 this.template('app/500.html', this.paths.src+'/500.html');
                 this.template('app/index.html', this.paths.src+'/index.html');
                 this.template('app/_layouts/default.html', this.paths.src+'/_layouts/default.html');
+            },
+
+            test: function()
+            {
+                this.composeWith(this.options['test-framework'] + ':app',
+                {
+                    options:
+                    {
+                        'skip-install': this.options['skip-install']
+                    }
+                },
+                {
+                    local: require.resolve('generator-mocha/generators/app/index.js')
+                });
             }
         },
 
@@ -225,17 +246,17 @@ module.exports = yeoman.generators.Base.extend
 
                 if (this.options['skip-install'])
                 {
-                    this.log('\nSkipping gem dependency installation. You will have to manually run ' + chalk.yellow.bold('bundle install --path vendor/bundle') + '.');
+                    this.log('Skipping gem dependency installation. You will have to manually run ' + chalk.yellow.bold('bundle install --path vendor/bundle') + '.');
                     done();
                 }
                 else
                 {
-                    this.log('\nInstalling gems for you using your ' + chalk.yellow.bold('Gemfile') + '...');
+                    this.log(chalk.magenta('Installing gems for you using your ') + chalk.yellow.bold('Gemfile') + chalk.magenta('...'));
                     this.spawnCommand('bundle', ['install', '--path', 'vendor/bundle']).on('exit', function(code)
                     {
                         if (code !== 0)
                         {
-                            this.log('\n' + chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('bundle install --path vendor/bundle') + chalk.red('.'));
+                            this.log(chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('bundle install --path vendor/bundle') + chalk.red('.'));
                         }
 
                         done();
@@ -245,44 +266,25 @@ module.exports = yeoman.generators.Base.extend
 
             npm: function()
             {
-                var done = this.async();
-
                 if (this.options['skip-install'])
                 {
-                    this.log('\nSkipping node dependency installation. You will have to manually run ' + chalk.yellow.bold('npm install') + '.');
-                    done();
+                    this.log('Skipping node dependency installation. You will have to manually run ' + chalk.yellow.bold('npm install') + '.');
                 }
                 else
                 {
-                    this.log('\nInstalling node modules for you using your ' + chalk.yellow.bold('package.json') + '...');
-                    this.spawnCommand('npm', ['install', '--ignore-scripts']).on('exit', function(code)
-                    {
-                        if (code !== 0)
-                        {
-                            this.log('\n' + chalk.red('Installation failed. Please manually run ') + chalk.yellow.bold('npm install') + chalk.red('.'));
-                        }
+                    this.log(chalk.magenta('Installing node modules for you using your ') + chalk.yellow.bold('package.json') + chalk.magenta('...'));
 
-                        done();
-                    }.bind(this));
+                    this.installDependencies({
+                      skipMessage: true,
+                      bower: false
+                    });
                 }
             }
         },
 
         end: function()
         {
-            this.log('\n' + chalk.green('Finished generating app!'));
-
-            // Ideally we should use composeWith, but we're invoking it here
-            // because generator-mocha is changing the working directory
-            // https://github.com/yeoman/generator-mocha/issues/28.
-            this.invoke(this.options['test-framework'],
-            {
-                options:
-                {
-                    'skip-message': this.options['skip-install-message'],
-                    'skip-install': this.options['skip-install']
-                }
-            });
+            this.log(chalk.green('Finished generating app!'));
         }
     }
 );

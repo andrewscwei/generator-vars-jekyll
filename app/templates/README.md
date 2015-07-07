@@ -32,7 +32,7 @@ This guideline refers to creating a new Heroku app from scratch.
 
 1. Create new app.
 
-2. Add the following [Heroku buildpacks](https://devcenter.heroku.com/articles/buildpacks) (order matters):
+2. ```.buildpacks``` should automatically set up the [Heroku buildpacks](https://devcenter.heroku.com/articles/buildpacks) for you upon deploy. If not, manually add the following (order matters):
   - Ruby: ```$ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-ruby```
   - Node.js: ```$ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-nodejs```
 

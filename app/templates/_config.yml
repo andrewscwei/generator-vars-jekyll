@@ -32,28 +32,13 @@ prose:
                 field:
                     element: 'text'
                     label: 'Title'
-                    help: 'This is the title which appears in the cover of the post. The title also appears as the tab name of the browser.'
                     placeholder: 'Change the post title here'
                     type: text
 
             -   name: 'published'
                 field:
                     element: 'checkbox'
-                    label: 'Specify whether this post is available on the live site.'
-                    help: 'Uncheck this if you do not want this post published for the time being. You can reenable this at a later time.'
+                    label: 'Published'
                     value: true
 
-        app/_drafts:
-            -   name: 'title'
-                field:
-                    element: 'text'
-                    label: 'Title'
-                    help: 'This is the title which appears in the cover of the post. The title also appears as the tab name of the browser.'
-                    placeholder: 'Change the post title here'
-                    type: text
-
-            -   name: 'published'
-                field:
-                    element: 'hidden'
-                    value: true
-
+        app/_drafts: *metadata

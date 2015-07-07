@@ -9,6 +9,8 @@ VARIANTE's Yeoman generator for a Jekyll app.
 - [BrowserSync](http://www.browsersync.io) for rapid development
 - [Sass](http://sass-lang.com) with Scalable and Modular Architecture (SMACSS) setup
 - [Browserify](http://browserify.org)
+- [Babel](https://babeljs.io) to use ES6 JS standards
+- Watchify for quick Browserify builds
 - [Sublime](http://www.sublimetext.com) project (optional)
 - [Heroku](http://heroku.com) setup
 
@@ -31,33 +33,49 @@ For [Modernizr](http://modernizr.com), manually configure your custom build and 
 |   |   +-- default.html
 |   +-- _posts
 |   +-- assets
-|   |   +-- styles
+|   |   +-- css
 |   |   |   +-- base
 |   |   |   |   +-- layout.scss
+|   |   |   |   +-- mixins.scss
 |   |   |   |   +-- normalize.scss
 |   |   |   |   +-- typography.scss
 |   |   |   +-- components
 |   |   |   +-- modules
 |   |   |   +-- main.scss
 |   |   +-- images
-|   |   +-- scripts
+|   |   +-- js
 |   |   |   +-- main.js
 |   |   +-- vendor
+|   +-- 404.html
+|   +-- 500.html
 |   +-- apple-touch-icon-57x57.png
 |   +-- apple-touch-icon-72x72.png
 |   +-- apple-touch-icon-114x114.png
 |   +-- apple-touch-icon.png
 |   +-- favico.ico
 |   +-- favico.png
-|   +-- og-image.png
-|   +-- 404.html
-|   +-- 500.html
 |   +-- index.html
-|   +-- README.md
+|   +-- og-image.png
 |   +-- robots.txt
-+-- public // runtime files go here
-+-- test // mocha tests
 +-- node_modules
++-- public // runtime files go here
++-- tasks
+|   +-- build.js
+|   +-- clean.js
+|   +-- config.js
+|   +-- extras.js
+|   +-- fonts.js
+|   +-- generate.js
+|   +-- images.js
+|   +-- scripts.js
+|   +-- serve.js
+|   +-- static.js
+|   +-- templates.js
+|   +-- videos.js
++-- test // mocha tests
++-- vendor
+|   +-- bundle
++-- .buildpacks
 +-- .editorconfig
 +-- .gitattributes
 +-- .gitignore
@@ -76,9 +94,9 @@ For [Modernizr](http://modernizr.com), manually configure your custom build and 
 
 ```gulp build```: Builds all source fies in the ```app``` directory with asset compression such as CSS/HTML/JavaScript minification and deploys them to the ```build``` directory.
 
-```gulp serve --debug```: Serves the ```.tmp``` directory to ```localhost``` and immediately watches source files for changes. Any change in the source files will invoke its corresponding build tasks. This is great for debugging.
+```gulp serve --debug --watch```: Serves the ```.tmp``` directory to ```localhost``` and immediately watches source files for changes. Any change in the source files will invoke its corresponding build tasks. This is great for debugging.
 
-```gulp serve```: Serves the ```build``` directory to ```localhost``` and immediately watches source files for changes. Any change in the source files will invoke a ```gulp build```. This command is not meant for debugging purposes and is for production testing only.
+```gulp serve```: Serves the ```build``` directory to ```localhost```.
 
 See ```gulpfile.js``` for more tasks and custom flags such as ```--skip-uglify```, ```--skip-csso```, etc.
 
