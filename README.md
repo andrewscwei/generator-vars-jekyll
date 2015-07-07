@@ -11,7 +11,6 @@ VARIANTE's Yeoman generator for a Jekyll app.
 - [Browserify](http://browserify.org)
 - [Babel](https://babeljs.io) to use ES6 JS standards
 - Watchify for quick Browserify builds
-- [Sublime](http://www.sublimetext.com) project (optional)
 - [Heroku](http://heroku.com) setup
 
 ## Libraries

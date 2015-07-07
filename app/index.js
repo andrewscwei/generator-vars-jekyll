@@ -111,12 +111,7 @@ module.exports = yeoman.generators.Base.extend
                                 name: 'jQuery',
                                 value: 'includejQuery',
                                 checked: false
-                            },
-                            {
-                                name: 'Sublime',
-                                value: 'includeSublime',
-                                checked: false
-                            },
+                            }
                         ]
                     }
                 ];
@@ -132,7 +127,6 @@ module.exports = yeoman.generators.Base.extend
 
                     this.includeBootstrap = hasFeature('includeBootstrap');
                     this.includejQuery = hasFeature('includejQuery');
-                    this.includeSublime = hasFeature('includeSublime');
 
                     done();
                 }.bind(this));
@@ -178,11 +172,6 @@ module.exports = yeoman.generators.Base.extend
                 this.template('tasks/styles.js');
                 this.template('tasks/templates.js');
                 this.template('tasks/videos.js');
-
-                if (this.includeSublime)
-                {
-                    this.template('sublime-project', this.appname + '.sublime-project');
-                }
             },
 
             static: function()
