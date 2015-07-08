@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.12.0
+3 info using node@v0.12.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Volumes/Developer/VARIANTE/Systems/generator-vars-jekyll',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package.tgz',
+9 verbose tar pack   '/Volumes/Developer/VARIANTE/Systems/generator-vars-jekyll' ]
+10 verbose tarball /Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package.tgz
+11 verbose folder /Volumes/Developer/VARIANTE/Systems/generator-vars-jekyll
+12 info prepublish generator-vars-jekyll@1.1.7
+13 verbose addLocalTarball adding from inside cache /Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package.tgz
+14 silly cache afterAdd generator-vars-jekyll@1.1.7
+15 verbose afterAdd /Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package/package.json not in flight; writing
+16 verbose afterAdd /Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package/package.json written
+17 silly publish { name: 'generator-vars-jekyll',
+17 silly publish   version: '1.1.7',
+17 silly publish   description: 'Jekyll web app + Gulp, Browserify, Babel, Sass and more.',
+17 silly publish   license: 'MIT',
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/VARIANTE/generator-vars-jekyll.git' },
+17 silly publish   author: { name: 'Andrew Wei', email: 'andrew@variante.io' },
+17 silly publish   homepage: 'https://github.com/VARIANTE/generator-vars-jekyll#readme',
+17 silly publish   main: 'app/index.js',
+17 silly publish   engines: { node: '>=0.12.0', npm: '>=2.7.3' },
+17 silly publish   scripts: { test: 'mocha --reporter spec' },
+17 silly publish   files: [ 'app' ],
+17 silly publish   keywords:
+17 silly publish    [ 'yeoman-generator',
+17 silly publish      'web',
+17 silly publish      'app',
+17 silly publish      'jekyll',
+17 silly publish      'gulp',
+17 silly publish      'vars',
+17 silly publish      'variante',
+17 silly publish      'sass',
+17 silly publish      'babel',
+17 silly publish      'babelify',
+17 silly publish      'browserify',
+17 silly publish      'browser-sync',
+17 silly publish      'smacss',
+17 silly publish      'watchify' ],
+17 silly publish   dependencies:
+17 silly publish    { chalk: '^1.0.0',
+17 silly publish      'yeoman-generator': '^0.18.10',
+17 silly publish      yosay: '^1.0.3' },
+17 silly publish   peerDependencies: { yo: '>=1.4.6', 'generator-mocha': '>=0.1.6', gulp: '>=3.8.11' },
+17 silly publish   devDependencies: { mocha: '*' },
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   readme: '# generator-vars-jekyll\n\nVARIANTE\'s Yeoman generator for a Jekyll app.\n\n## Features\n\n- [Jekyll](http://jekyllrb.com)\n- [Gulp](http://gulpjs.com) setup for CSS, JavaScript, and HTML minification as well as static asset revisioning (appending content hash to filenames)\n- [BrowserSync](http://www.browsersync.io) for rapid development\n- [Sass](http://sass-lang.com) with Scalable and Modular Architecture (SMACSS) setup\n- [Browserify](http://browserify.org)\n- [Babel](https://babeljs.io) for coding in ES6 standards\n- Watchify for quick Browserify rebundling\n- [Heroku](http://heroku.com) setup\n\n## Libraries\n\n- Bootstrap (optional)\n- jQuery (optional)\n\nFor [Modernizr](http://modernizr.com), manually configure your custom build and put it in ```app/assets/vendor``` folder, then include ```/assets/vendor/vendor.js``` in your HTML.\n\n## Structure\n\n```\n.\n+-- app\n|   +-- _data\n|   +-- _drafts\n|   +-- _includes\n|   +-- _layouts\n|   |   +-- default.html\n|   +-- _posts\n|   +-- assets\n|   |   +-- css\n|   |   |   +-- base\n|   |   |   |   +-- layout.scss\n|   |   |   |   +-- mixins.scss\n|   |   |   |   +-- normalize.scss\n|   |   |   |   +-- typography.scss\n|   |   |   +-- components\n|   |   |   +-- modules\n|   |   |   +-- main.scss\n|   |   +-- images\n|   |   +-- js\n|   |   |   +-- main.js\n|   |   +-- vendor\n|   +-- 404.html\n|   +-- 500.html\n|   +-- apple-touch-icon-57x57.png\n|   +-- apple-touch-icon-72x72.png\n|   +-- apple-touch-icon-114x114.png\n|   +-- apple-touch-icon.png\n|   +-- favico.ico\n|   +-- favico.png\n|   +-- index.html\n|   +-- og-image.png\n|   +-- robots.txt\n+-- node_modules\n+-- public // runtime files go here\n+-- tasks\n|   +-- build.js\n|   +-- clean.js\n|   +-- config.js\n|   +-- extras.js\n|   +-- fonts.js\n|   +-- generate.js\n|   +-- images.js\n|   +-- scripts.js\n|   +-- serve.js\n|   +-- static.js\n|   +-- styles.js\n|   +-- templates.js\n|   +-- videos.js\n+-- test // mocha tests\n+-- vendor\n|   +-- bundle\n+-- .buildpacks\n+-- .editorconfig\n+-- .gitattributes\n+-- .gitignore\n+-- .jshintrc\n+-- .yo-rc.json\n+-- _config.yml\n+-- Gemfile\n+-- gulpfile.js\n+-- package.json\n+-- server.js\n```\n\n## Tasks\n\n```gulp build --debug```: Builds all source files in the ```app``` directory but skips all compression tasks.\n\n```gulp build```: Builds all source fies in the ```app``` directory with asset compression such as CSS/HTML/JavaScript minification and deploys them to the ```public``` directory.\n\n```gulp serve --debug --watch```: Serves the ```.tmp``` directory to ```localhost``` and immediately watches source files for changes. Any change in the source files will invoke its corresponding build tasks. This is great for debugging.\n\n```gulp serve```: Serves the ```public``` directory to ```localhost```.\n\nSee ```gulpfile.js``` for more tasks and custom flags such as ```--skip-uglify```, ```--skip-csso```, etc.\n\n## Usage\n\nInstall ```yo```:\n```\nnpm install -g yo\n```\n\nInstall ```generator-vars-jekyll```:\n```\nnpm install -g generator-vars-jekyll\n```\n\nCreate a new directory for your project and ```cd``` into it:\n```\nmkdir new-project-name && cd $_\n```\n\nGenerate the project:\n```\nyo vars-jekyll [app-name]\n```\n\nFor details on initial setup procedures of the project, see its generated ```README.md``` file.\n\n## License\n\nThis software is released under the [MIT License](http://opensource.org/licenses/MIT).\n',
+17 silly publish   gitHead: 'd5682d33fc7a3ff6f564aa8ab1be7bdda0caa842',
+17 silly publish   bugs: { url: 'https://github.com/VARIANTE/generator-vars-jekyll/issues' },
+17 silly publish   _id: 'generator-vars-jekyll@1.1.7',
+17 silly publish   _shasum: '189d4ddd7bfe96ea1353382542b6c4a9a972122b',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name generator-vars-jekyll
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/generator-vars-jekyll
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/andrewscwei/.npm/generator-vars-jekyll/1.1.7/package.tgz
+25 verbose request uri https://registry.npmjs.org/generator-vars-jekyll
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 5:27:44 PM
+28 verbose request id 41786b28477fc4b8
+29 http request PUT https://registry.npmjs.org/generator-vars-jekyll
+30 http 403 https://registry.npmjs.org/generator-vars-jekyll
+31 verbose headers { 'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=60',
+31 verbose headers   'content-length': '95',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   date: 'Wed, 08 Jul 2015 00:27:45 GMT',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   connection: 'keep-alive',
+31 verbose headers   'x-served-by': 'cache-lax1435-LAX',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1436315264.994446,VS0,VE570' }
+32 verbose request invalidating /Users/andrewscwei/.npm/registry.npmjs.org/generator-vars-jekyll on PUT
+33 error publish Failed PUT 403
+34 verbose stack Error: "You cannot publish over the previously published version 1.1.7." : generator-vars-jekyll
+34 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+34 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+34 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:197:22)
+34 verbose stack     at Request.emit (events.js:110:17)
+34 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1050:14)
+34 verbose stack     at Request.emit (events.js:129:20)
+34 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:996:12)
+34 verbose stack     at IncomingMessage.emit (events.js:129:20)
+34 verbose stack     at _stream_readable.js:908:16
+34 verbose stack     at process._tickCallback (node.js:355:11)
+35 verbose statusCode 403
+36 verbose pkgid generator-vars-jekyll
+37 verbose cwd /Volumes/Developer/VARIANTE/Systems/generator-vars-jekyll
+38 error Darwin 14.4.0
+39 error argv "node" "/usr/local/bin/npm" "publish"
+40 error node v0.12.0
+41 error npm  v2.12.0
+42 error code E403
+43 error "You cannot publish over the previously published version 1.1.7." : generator-vars-jekyll
+44 error If you need help, you may report this error at:
+44 error     <https://github.com/npm/npm/issues>
+45 verbose exit [ 1, true ]
