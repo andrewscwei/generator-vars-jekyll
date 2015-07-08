@@ -139,6 +139,7 @@ module.exports =
     skipCSSO: skipCSSO,
     skipUglify: skipUglify,
     skipRev: skipRev,
+    skipMinifyHTML: skipMinifyHTML,
     watch: watch,
     port: port,
     serve: serve
