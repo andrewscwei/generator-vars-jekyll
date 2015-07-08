@@ -92,11 +92,11 @@ For [Modernizr](http://modernizr.com), manually configure your custom build and 
 
 ```gulp build --debug```: Builds all source files in the ```app``` directory but skips all compression tasks.
 
-```gulp build```: Builds all source fies in the ```app``` directory with asset compression such as CSS/HTML/JavaScript minification and deploys them to the ```build``` directory.
+```gulp build```: Builds all source fies in the ```app``` directory with asset compression such as CSS/HTML/JavaScript minification and deploys them to the ```public``` directory.
 
 ```gulp serve --debug --watch```: Serves the ```.tmp``` directory to ```localhost``` and immediately watches source files for changes. Any change in the source files will invoke its corresponding build tasks. This is great for debugging.
 
-```gulp serve```: Serves the ```build``` directory to ```localhost```.
+```gulp serve```: Serves the ```public``` directory to ```localhost```.
 
 See ```gulpfile.js``` for more tasks and custom flags such as ```--skip-uglify```, ```--skip-csso```, etc.
 
