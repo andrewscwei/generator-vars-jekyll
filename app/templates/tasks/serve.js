@@ -40,13 +40,11 @@ gulp.task('serve', function()
     // Watch for changes.
     if (config.env.watch)
     {
-        gulp.watch('_config.yml', function() { sequence('generate', 'build', browserSync.reload); });
-        gulp.watch(config.paths.src+'/**/*.'+config.patterns.data, function() { sequence('generate', 'build', browserSync.reload); });
-        gulp.watch(config.paths.src+'/**/*.'+config.patterns.images, function() { sequence('generate', 'images', browserSync.reload); });
-        gulp.watch(config.paths.src+'/**/*.'+config.patterns.videos, function() { sequence('generate', 'videos', browserSync.reload); });
-        gulp.watch(config.paths.src+'/**/*.'+config.patterns.styles, function() { sequence('generate', 'styles', browserSync.reload); });
-        gulp.watch(config.paths.src+'/**/*.'+config.patterns.scripts, function() { sequence('generate'); });
+        gulp.watch(config.paths.generated+'/**/*.'+config.patterns.data, function() { sequence('build', browserSync.reload); });
+        gulp.watch(config.paths.generated+'/**/*.'+config.patterns.images, function() { sequence('images', browserSync.reload); });
+        gulp.watch(config.paths.generated+'/**/*.'+config.patterns.videos, function() { sequence('videos', browserSync.reload); });
+        gulp.watch(config.paths.generated+'/**/*.'+config.patterns.styles, function() { sequence('styles', browserSync.reload); });
+        gulp.watch(config.paths.generated+'/**/*.'+config.patterns.templates, function() { sequence('templates', browserSync.reload); });
         gulp.watch(config.paths.tmp+'/**/*.'+config.patterns.scripts, browserSync.reload);
-        gulp.watch(config.paths.src+'/**/*.'+config.patterns.templates, function() { sequence('generate', 'templates', browserSync.reload); });
     }
 });
