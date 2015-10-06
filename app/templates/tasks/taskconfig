@@ -18,7 +18,6 @@ var debug = $env['debug'] || $env['d'] || process.env.NODE_ENV === 'development'
  * Supported options specified through CLI params when executing Gulp tasks. Note that if debug is true,
  * all 'skip-' flags are default to true.
  *
- * @type {Boolean}  --cache, --c            Specifies whether caching is enabled (faster iteration for certain tasks).
  * @type {Boolean}  --css-sourcemaps, --csm Specifies whether the pipeline will generate sourcemaps for CSS files.
  * @type {Boolean}  --js-sourcemaps, --jsm  Specifies whether the pipeline will generate sourcemaps for JS files.
  * @type {Number}   --port, --p             Specifies the port which BrowserSync will use when serving the app locally. Note
@@ -36,7 +35,6 @@ var debug = $env['debug'] || $env['d'] || process.env.NODE_ENV === 'development'
  *                                         complete.
  */
 var env = {
-  cache: $env['cache'] || $env['c'],
   cssSourcemaps: $env['css-sourcemaps'] || $env['csm'],
   jsSourcemaps: $env['js-sourcemaps'] || $env['jsm'] || debug,
   port: $env['port'] || $env['p'],
