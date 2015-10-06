@@ -48,7 +48,7 @@ This guideline refers to creating a new Heroku app from scratch.
   ```
   $ node server.js
   ```
-  This will serve the ```public``` directory in the port provided by Heroku or ```9000``` otherwise.
+  This will serve the ```public``` directory in the port provided by Heroku or ```3000``` otherwise.
 
 ## Tasks
 
@@ -60,7 +60,7 @@ This guideline refers to creating a new Heroku app from scratch.
 
 ```gulp serve```: Serves the ```<%= paths.build %>``` directory to ```localhost```.
 
-See ```gulpfile.js``` for more tasks and custom flags such as ```--skip-uglify```, ```--skip-csso```, etc.
+See ```./tasks/.taskconfig``` for more custom flags such as ```--skip-js-min```, ```--skip-css-min```, etc.
 
 ## Blogging
 

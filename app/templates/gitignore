@@ -1,13 +1,11 @@
 node_modules
-include
-bin
-lib
+bower_components
+/include
+/bin
+/lib
 /vendor
-<%= paths.build %>
-<%= paths.tmp %>
-<%= paths.generated %>
+/<%= paths.build %>
+/<%= paths.tmp %>
 .DS_STORE
 .jekyll-metadata
-*.sublime-project
-*.sublime-workspace
 npm-debug.log
