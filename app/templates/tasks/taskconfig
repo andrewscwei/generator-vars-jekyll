@@ -81,14 +81,7 @@ var clean = {
  */
 var images = {
   entry: path.join(paths.src, '_assets', '**', '*.' + patterns.images),
-  output: path.join(paths.build, 'assets'),
-  imagemin: {
-    progressive: true,
-    interlaced: true,
-    svgoPlugins: [{
-      cleanupIDs: false
-    }]
-  }
+  output: path.join(paths.build, 'assets')
 };
 
 /**
