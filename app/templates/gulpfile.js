@@ -3,7 +3,7 @@
  * (c)<% if (appauthor !== '') { %> <%= appauthor %><% } %><% if (appauthoremail !== '') { %> <<%= appauthoremail %>><% } %><% } %>
  *
  * This file only contains the default task. See ./tasks for individual sub-tasks. To add a new
- * sub-task, create new file in ./tasks and require it here. For task configurations, see ./tasks/config.js.
+ * sub-task, create new file in ./tasks and require it here. For task configurations, see ./tasks/.taskconfig.
  *
  * Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
  */
@@ -25,7 +25,6 @@ var sequence = require('run-sequence');
  * as serving and watching files for changes.
  *
  * @param {Boolean} debug
- * @param {Boolean} skipImageMin
  * @param {Boolean} skipCSSO
  * @param {Boolean} skipUglify
  * @param {Boolean} skipRev
