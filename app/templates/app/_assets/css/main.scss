@@ -6,7 +6,7 @@
 $base-path: '../' !default;<% if (includeBootstrap) {%>
 $icon-font-path: '../fonts/';
 
-@import 'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';<% } %>
+@import 'bootstrap-sass/assets/stylesheets/_bootstrap';<% } %>
 
 @import 'base/definitions';
 @import 'base/normalize';
