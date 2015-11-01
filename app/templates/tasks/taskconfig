@@ -163,7 +163,6 @@ var serve = {
       baseDir: paths.build
     },
     files: [paths.build],
-    browser: 'google chrome',
     notify: false,
     port: (typeof port === 'number') ? env.port : 9000
   }
