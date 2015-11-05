@@ -20,6 +20,12 @@ gulp.task('generate', function(callback) {
   var proc;
   var callbackGuard = false;
 
+  if (config.env.watch && !config.debug) {
+    $util.log($util.colors.yellow('Watch is not supported in production. Please specify ') + '--debug' + $util.colors.yellow('.'));
+    callback();
+    return;
+  }
+
   if (config.debug) {
     if (config.env.watch) {
       proc = spawn(jekyll, ['build', '--drafts', '--watch', '--destination=' + config.paths.tmp]);

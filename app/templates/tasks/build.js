@@ -108,6 +108,11 @@ gulp.task('styles', function() {
  * @param {Boolean} watch
  */
 gulp.task('scripts', function() {
+  if (config.env.watch && !config.debug) {
+    $util.log($util.colors.yellow('Watch is not supported in production. Please specify ') + '--debug' + $util.colors.yellow('.'));
+    return;
+  }
+
   function bundle(bundler, output, next) {
     return bundler.bundle()
       .on('error', function(err) {

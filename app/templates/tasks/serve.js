@@ -18,7 +18,7 @@ var $util = require('gulp-util');
  */
 gulp.task('serve', function() {
   if (config.env.watch && !config.debug) {
-    $util.log($util.colors.yellow('Watch is not supported in production. Please specify ') + '--debug' + $util.colors.yellow(' instead.'));
+    $util.log($util.colors.yellow('Watch is not supported in production. Please specify ') + '--debug' + $util.colors.yellow('.'));
     return;
   }
 
