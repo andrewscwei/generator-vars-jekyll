@@ -91,6 +91,8 @@ All tasks are broken into micro-tasks, check out the ```tasks``` folder for more
 
 ## Usage
 
+###Installation
+
 Install ```yo```:
 ```
 npm install -g yo
@@ -110,6 +112,14 @@ Generate the project:
 ```
 yo vars-jekyll [app-name]
 ```
+
+###See It In Action (An example for demonstrating development)
+
+in a terminal instance
+```
+gulp --d --w --s. #This would generate your Jekyll project, compile all assets, serve your project when done and watch for file changes as well (and of course live reloading the browser when changes come in).
+```
+
 
 For details on initial setup procedures of the project, see its generated ```README.md``` file.
 
