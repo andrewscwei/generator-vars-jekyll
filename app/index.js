@@ -225,6 +225,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   end: function() {
-    this.log(chalk.green('Finished generating app!'));
+    this.log(chalk.green('Finished generating app! See the generated ') + chalk.yellow('README.md') + chalk.green(' for more guidelines. To start developing right away, run: ') + chalk.yellow.bold('gulp --d --w --s'));
   }
 });

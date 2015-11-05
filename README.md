@@ -83,15 +83,11 @@ For [Modernizr](http://modernizr.com), manually configure your custom build and 
 
 ## Tasks
 
-```gulp build --debug```: Builds all source files in the ```app``` directory but skips all compression tasks.
+```gulp --debug --watch --serve```: Generates the Jekyll project, compiles all assets, serves the site and watches for file changes. Best used during development.
 
-```gulp build```: Builds all source fies in the ```app``` directory with asset compression such as CSS/HTML/JavaScript minification and deploys them to the ```public``` directory.
+```gulp```: Builds the entire project in production.
 
-```gulp serve --debug --watch```: Serves the ```.tmp``` directory to ```localhost``` and immediately watches source files for changes. Any change in the source files will invoke its corresponding build tasks. This is great for debugging.
-
-```gulp serve```: Serves the ```public``` directory to ```localhost```.
-
-See ```tasks/.taskconfig``` for more custom flags such as ```--skip-js-min```, ```--skip-css-min```, etc.
+All tasks are broken into micro-tasks, check out the ```tasks``` folder for more details. Also see ```tasks/.taskconfig``` for more custom flags such as ```--skip-js-min```, ```--skip-css-min```, etc.
 
 ## Usage
 
