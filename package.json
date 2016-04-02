@@ -16,7 +16,7 @@
     "node": ">=5.0.0"
   },
   "scripts": {
-    "test": "echo \"No tests yet :)\""
+    "test": "mocha tests --recursive --reporter spec"
   },
   "files": [
     "app"
@@ -45,5 +45,10 @@
   "peerDependencies": {
     "yo": ">=1.4.6"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "yeoman-assert": "^2.1.2",
+    "yeoman-test": "^1.1.0"
+  }
 }

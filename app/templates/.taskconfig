@@ -1,5 +1,5 @@
-<% if (appauthor !== '') { %> // (c) <%= appauthor %><% } %>
-
+<% if (appauthor !== '') { %>// (c) <%= appauthor %>
+<% } %>
 import glob from 'glob';
 import path from 'path';
 import webpack from 'webpack';

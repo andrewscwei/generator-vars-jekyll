@@ -1,5 +1,5 @@
-<% if (appauthor !== '') { %> // (c) <%= appauthor %><% } %>
-
+<% if (appauthor !== '') { %>// (c) <%= appauthor %>
+<% } %>
 import autoprefixer from 'autoprefixer';
 import config from './.taskconfig';
 import gulp from 'gulp';

@@ -1,5 +1,5 @@
-<% if (appauthor !== '') { %> // (c) <%= appauthor %><% } %>
-
+<% if (appauthor !== '') { %>// (c) <%= appauthor %>
+<% } %>
 'use strict';
 
 var express = require('express');
