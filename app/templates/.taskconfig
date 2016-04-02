@@ -1,0 +1,124 @@
+<% if (appauthor !== '') { %> // (c) <%= appauthor %><% } %>
+
+import glob from 'glob';
+import path from 'path';
+import webpack from 'webpack';
+import { env as $env } from 'gulp-util';
+
+// Supported CLI options.
+const env = {
+  debug: $env['debug'] || $env['d'] || process.env.NODE_ENV === 'development',
+  watch: $env['watch'] || $env['w']
+};
+
+// Common paths used throughout the Gulp pipeline.
+const sourceDir = path.join(__dirname, '<%= paths.src %>');
+const buildDir = path.join(__dirname, '<%= paths.build %>');
+const modulesDir = path.join(__dirname, 'node_modules');
+
+export default {
+  env: env,
+  cdn: ((process.env.CIRCLE_BRANCH === 'master') && process.env.CDN_PATH) || '',
+  images: {
+    entry: path.join(sourceDir, '_assets', 'images', '**', '*.{jpg,jpeg,gif,png,svg}'),
+    output: path.join(buildDir, 'assets', 'images')
+  },
+  videos: {
+    entry: path.join(sourceDir, '_assets', 'videos', '**', '*.{ogv,mp4}'),
+    output: path.join(buildDir, 'assets', 'videos')
+  },
+  fonts: {
+    entry: path.join(sourceDir, '_assets', 'fonts', '**', '*.{eot,svg,ttf,woff,woff2}'),
+    output: path.join(buildDir, 'assets', 'fonts')
+  },
+  styles: {
+    entry: path.join(sourceDir, '_assets', 'stylesheets', '*.{css,scss,sass}'),
+    output: path.join(buildDir, 'assets', 'stylesheets'),
+    sass: {
+      outputStyle: env.debug ? 'nested' : 'compressed',
+      includePaths: [
+        modulesDir,
+        path.join(sourceDir, '_data'),
+        path.join(sourceDir, '_assets', 'stylesheets')
+      ]
+    },
+    autoprefixer: {
+      browsers: ['last 2 version']
+    }
+  },
+  scripts: {
+    cache: env.debug,
+    context: path.join(sourceDir, '_assets', 'javascripts'),
+    debug: env.debug,
+    devtool: env.debug ? 'eval' : null,
+    entry: {
+      vendor: glob.sync(path.join(sourceDir, '_assets', 'vendor', '**', '*.js')),
+      main: './main.js'
+    },
+    output: {
+      path: path.join(buildDir, 'assets', 'javascripts'),
+      publicPath: '/assets/javascripts/',
+      filename: '[name].js',
+      chunkFilename: '[chunkhash].js'
+    },
+    module: {
+      loaders: [{
+        test: path.join(sourceDir, '_assets', 'vendor'),
+        loader: 'imports?module=>false,define=>false,exports=>false,this=>window'
+      },{
+        test: /\.js/,
+        loader: 'babel',
+        include: path.join(sourceDir, '_assets', 'javascripts'),
+        exclude: /node_modules/
+      }, {
+        test: /\.yml/,
+        loaders: [
+          'json',
+          'yaml'
+        ],
+        include: path.join(sourceDir, '_data')
+      }, {
+        test: /\.json/,
+        loader: 'json',
+        include: path.join(sourceDir, '_data')
+      }],
+      noParse: [
+        new RegExp(`${path.join(sourceDir, '_assets', 'vendor')}.*.js$`)
+      ]
+    },
+    resolve: {
+      extensions: ['', '.js', '.json', '.yml'],
+      root: [
+        path.join(sourceDir, '_assets', 'javascripts'),
+        path.join(sourceDir, '_data')
+      ],
+      modulesDirectories: [
+        modulesDir
+      ]
+    },
+    plugins: [new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')].concat(env.debug ? [] : [
+        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false }, sourceMap: false })
+      ])
+  },
+  rev: {
+    entry: path.join(buildDir, '**', '*.{css,jpg,jpeg,gif,png,svg,js,eot,svg,ttf,woff,woff2,ogv,mp4}'),
+    output: buildDir,
+    manifestFile: 'rev-manifest.json',
+    replace: path.join(buildDir, '**', '*.{css,scss,sass,js,html}')
+  },
+  watch: {
+    entries: [{
+      files: path.join(sourceDir, '_assets', 'images', '**', '*.{jpg,jpeg,gif,png,svg}'),
+      tasks: ['images']
+    }, {
+      files: path.join(sourceDir, '_assets', 'videos', '**', '*.{ogv,mp4}'),
+      tasks: ['videos']
+    }, {
+      files: path.join(sourceDir, '_assets', 'stylesheets', '**', '*.{css,scss,sass}'),
+      tasks: ['styles']
+    }, {
+      files: path.join(sourceDir, '_data', '**', '*.yml'),
+      tasks: ['styles']
+    }]
+  }
+};

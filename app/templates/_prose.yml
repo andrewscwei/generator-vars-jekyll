@@ -1,0 +1,63 @@
+prose:
+  rooturl: '<%= paths.src %>'
+  media: '<%= paths.src %>/_assets/images'
+  ignore:
+    - .bundle
+    - app/_assets
+    - app/_data
+    - app/_includes
+    - app/_layouts
+    - app/404.html
+    - app/500.html
+    - app/apple-touch-icon-180x180-precomposed.png
+    - app/apple-touch-icon-152x152-precomposed.png
+    - app/apple-touch-icon-144x144-precomposed.png
+    - app/apple-touch-icon-120x120-precomposed.png
+    - app/apple-touch-icon-114x114-precomposed.png
+    - app/apple-touch-icon-76x76-precomposed.png
+    - app/apple-touch-icon-72x72-precomposed.png
+    - app/apple-touch-icon-60x60-precomposed.png
+    - app/apple-touch-icon-57x57-precomposed.png
+    - app/apple-touch-icon-precomposed.png
+    - app/browserconfig.xml
+    - app/favicon.ico
+    - app/favicon.png
+    - app/index.html
+    - app/large.png
+    - app/launcher-icon-0-75x.png
+    - app/launcher-icon-1-5x.png
+    - app/launcher-icon-1x.png
+    - app/launcher-icon-2x.png
+    - app/launcher-icon-3x.png
+    - app/launcher-icon-4x.png
+    - app/manifest.json
+    - app/og-image.png
+    - app/robots.txt
+    - square.png
+    - app/tiny.png
+    - app/wide.png
+    - tests
+    - .babelrc
+    - .buildpacks
+    - .editorconfig
+    - .gitignore
+    - .jshintrc
+    - .taskconfig
+    - Gemfile
+    - Gemfile.lock
+    - README.md
+    - _config.yml
+    - _prose.yml
+    - circle.yml
+    - gulpfile.babel.js
+    - package.json
+    - server.js
+  metadata:
+    app/_posts: &metadata
+      - name: 'title'
+        field:
+          element: 'text'
+          label: 'Title'
+          placeholder: 'Change the post title here'
+          type: text
+    app/_drafts: *metadata

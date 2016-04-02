@@ -1,0 +1,31 @@
+machine:
+  node:
+    version: 5.6.0
+dependencies:
+  post:
+    - npm run build
+test:
+  post:
+    - sed -i -e '/public/d' .gitignore
+    - git config user.name "circleci"
+    - git config user.email "circleci@circleci.com"
+    - git add public
+    - git rm -rf app
+    - git rm -rf tests
+    - git rm -rf .bundle
+    - git rm -f .buildpacks
+    - git rm -f .editorconfig
+    - git rm -f .taskconfig
+    - git rm -f Gemfile
+    - git rm -f Gemfile.lock
+    - git rm -f README.md
+    - git rm -f _config.yml
+    - git rm -f circle.yml
+    - git rm -f gulpfile.babel.js
+    - git commit -m "CircleCI build"
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+#       - git push -f git@heroku.com:heroku-app-name.git ${CIRCLE_BRANCH}:master

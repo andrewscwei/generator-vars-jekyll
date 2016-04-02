@@ -1,83 +1,104 @@
-# generator-vars-jekyll
+# generator-vars-jekyll [![Circle CI](https://circleci.com/gh/VARIANTE/generator-vars-jekyll/tree/master.svg?style=svg)](https://circleci.com/gh/VARIANTE/generator-vars-jekyll/tree/master) [![npm version](https://badge.fury.io/js/generator-vars-jekyll.svg)](https://badge.fury.io/js/generator-vars-jekyll)
 
-VARIANTE's Yeoman generator for a Jekyll app.
+VARIANTE's Yeoman generator for a Jekyll-based web app.
 
 ## Features
 
-- [Jekyll](http://jekyllrb.com)
-- [Gulp](http://gulpjs.com) setup for CSS, JavaScript, and HTML minification as well as static asset revisioning (appending content hash to filenames)
-- [BrowserSync](http://www.browsersync.io) for rapid development
-- [Sass](http://sass-lang.com) with Scalable and Modular Architecture (SMACSS) setup
-- [Browserify](http://browserify.org)
-- [Babel](https://babeljs.io) for coding in ES6 standards
-- Watchify for quick Browserify rebundling
-- [Heroku](http://heroku.com) setup
+- [Jekyll](http://jekyllrb.com) `v3.1`
+  - Fast HTML compression using [https://github.com/penibelst/jekyll-compress-html](https://github.com/penibelst/jekyll-compress-html)
+- [Gulp](http://gulpjs.com) asset pipeline
+  - [Sass](http://sass-lang.com) -> minified CSS
+  - [Babel](https://babeljs.io) ES6 -> ES5
+  - Static asset revisioning (appending content hash to filenames)
+- [Webpack](https://webpack.github.io/)
+- [BrowserSync](http://www.browsersync.io) as dev server
+- [Heroku](http://heroku.com) integration
+- [CircleCI](https://circleci.com/) integration
+- CDN path remapping
+- [HTML5 boilerplate favicon template](https://drublic.de/archive/html5-boilerplate-favicons-psd-template/)
+- Automatically manages and concats legacy JS libraries (i.e. `<script>`) in a designated folder
 
-## Libraries
+## Requirements
 
-- Bootstrap (optional)
-- jQuery (optional)
-
-For [Modernizr](http://modernizr.com), manually configure your custom build and put it in ```app/assets/vendor``` folder, then include ```/assets/vendor/vendor.js``` in your HTML.
+1. [Node](https://nodejs.org) `>=v5.0.0`
+2. [Ruby](https://www.ruby-lang.org/en/) `>=v2.3.0`
+3. [Bundler](http://bundler.io/)
 
 ## Structure
 
 ```
 .
++-- .babelrc
 +-- .buildpacks
 +-- .editorconfig
-+-- .gitattributes
 +-- .gitignore
 +-- .jshintrc
++-- .taskconfig
 +-- app
 |   +-- .jshintrc
 |   +-- _assets
-|   |   +-- css
+|   |   +-- stylesheets
 |   |   |   +-- base
 |   |   |   |   +-- definitions.scss
 |   |   |   |   +-- layout.scss
-|   |   |   |   +-- normalize.scss
 |   |   |   |   +-- typography.scss
-|   |   |   +-- components
-|   |   |   +-- modules
 |   |   |   +-- main.scss
+|   |   +-- fonts
 |   |   +-- images
-|   |   |   +-- apple-touch-icon-57x57.png
-|   |   |   +-- apple-touch-icon-72x72.png
-|   |   |   +-- apple-touch-icon-114x114.png
-|   |   |   +-- apple-touch-icon.png
-|   |   |   +-- favico.png
-|   |   |   +-- og-image.png
-|   |   +-- js
+|   |   +-- javascripts
 |   |   |   +-- main.js
 |   |   +-- vendor
+|   |   +-- videos
 |   +-- _data
 |   +-- _drafts
 |   +-- _includes
 |   +-- _layouts
+|   |   +-- compress.html
 |   |   +-- default.html
 |   +-- _posts
 |   +-- 404.html
 |   +-- 500.html
-|   +-- favico.ico
 |   +-- index.html
+|   +-- apple-touch-icon-180x180-precomposed.png
+|   +-- apple-touch-icon-152x152-precomposed.png
+|   +-- apple-touch-icon-144x144-precomposed.png
+|   +-- apple-touch-icon-120x120-precomposed.png
+|   +-- apple-touch-icon-114x114-precomposed.png
+|   +-- apple-touch-icon-76x76-precomposed.png
+|   +-- apple-touch-icon-72x72-precomposed.png
+|   +-- apple-touch-icon-60x60-precomposed.png
+|   +-- apple-touch-icon-57x57-precomposed.png
+|   +-- apple-touch-icon-precomposed.png
+|   +-- browserconfig.xml
+|   +-- favicon.ico
+|   +-- favicon.png
+|   +-- large.png
+|   +-- launcher-icon-0-75x.png
+|   +-- launcher-icon-1-5x.png
+|   +-- launcher-icon-1x.png
+|   +-- launcher-icon-2x.png
+|   +-- launcher-icon-3x.png
+|   +-- launcher-icon-4x.png
+|   +-- manifest.json
+|   +-- og-image.png
 |   +-- robots.txt
+|   +-- square.png
+|   +-- tiny.png
+|   +-- wide.png
 +-- node_modules
-+-- public // runtime files go here
-+-- tasks
++-- public
++-- test
 |   +-- .jshintrc
-|   +-- .taskconfig
-|   +-- build.js
-|   +-- clean.js
-|   +-- generate.js
-|   +-- serve.js
-+-- test // mocha tests
+|   +-- index.js
 +-- vendor
 |   +-- bundle
 +-- _config.yml
++-- _prose.yml
++-- circle.yml
 +-- Gemfile
-+-- gulpfile.js
++-- gulpfile.babel.js
 +-- package.json
++-- README.md
 +-- server.js
 ```
 
@@ -91,29 +112,35 @@ All tasks are broken into micro-tasks, check out the ```tasks``` folder for more
 
 ## Usage
 
-Install ```yo```:
+Install `yo` and `generator-vars-jekyll`:
 ```
-npm install -g yo
-```
-
-Install ```generator-vars-jekyll```:
-```
-npm install -g generator-vars-jekyll
+$ npm install -g yo generator-vars-jekyll
 ```
 
-Create a new directory for your project and ```cd``` into it:
+Create a new directory for your project and `cd` into it:
 ```
-mkdir new-project-name && cd $_
+$ mkdir new-project-name && cd $_ 
 ```
 
 Generate the project:
 ```
-yo vars-jekyll [app-name]
+$ yo vars-jekyll [app-name]
 ```
 
 For details on initial setup procedures of the project, see its generated ```README.md``` file.
 
 ## Release Notes
+
+### 3.0.0
+1. Removed optional libraries. The goal of this generator is just to provide a boilerplate without unnecessary dependencies.
+2. Replaced Browserify with Webpack.
+3. Build/asset pipeline is now mainly driven by NPM scripts (although the core is still Gulp).
+4. Updated Jekyll to v3 and Node to v5.
+5. Updated NPM packages and Gems. 
+6. Added CircleCI default integration (with Heroku).
+7. Added compatibility with the [HTML5 boilerplate favicon template](https://drublic.de/archive/html5-boilerplate-favicons-psd-template/).
+8. Added CDN support.
+9. Many other optimizations.
 
 ### 2.0.0
 1. Updated version numbers of NPM package dependencies.

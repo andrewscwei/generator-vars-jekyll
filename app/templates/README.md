@@ -1,63 +1,63 @@
 # <%= appname %>
 
-This app is scaffolded by [Yeoman](http://yeoman.io). See [generator-vars-jekyll](https://github.com/VARIANTE/generator-vars-jekyll.git) for more details. This app is a static, database-less, blog-aware site that uses the [Jekyll](http://jekyllrb.com) generator and pipelined by [Gulp](http://gulpjs.com).
+This app is scaffolded by [Yeoman](http://yeoman.io) using the generator [generator-vars-jekyll](https://github.com/VARIANTE/generator-vars-jekyll.git). 
 
 ## Setup
 
 ### Local
 
-Do the following to get the app up and running in your local machine.
+```
+$ bundle install
+$ npm install
+$ npm run prod
+```
 
-1. Get dependencies:
-  - Heroku Toolbelt ([https://toolbelt.heroku.com](https://toolbelt.heroku.com))
-  - Node ([https://nodejs.org](https://nodejs.org))
-  - Bundler ([http://bundler.io](http://bundler.io))
-  - Gulp ([http://gulpjs.com](http://gulpjs.com))
-    - ensure that Gulp is installed globally: ```$ sudo npm install -g gulp```
+Visit `http://localhost:3000`, voila.
 
-2. Install required gems:
-  ```
-  $ bundle install
-  ```
+### Heroku
 
-3. Install required node modules:
-  ```
-  $ npm install
-  ```
-  After ```npm``` is done installing dependencies, it will trigger its ```postinstall``` script which will run a clean ```gulp``` build for production.
+Create an app on Heroku and link to this repo. The generated `.buildpacks` file should then automatically configure [Heroku buildpacks](https://devcenter.heroku.com/articles/buildpacks) upon first deploy. If you do not plan on using a CI/CD service such as [CircleCI](https://circleci.com/) and wish to have Heroku automatically build this app everytime you deploy, tweak the following:
 
-### Cloud (Heroku)
+1. Allow the Node.js buildpack to install `devDependencies` by changing the environment variable `NPM_CONFIG_PRODUCTION` to `false` either in the dashboard or using [Heroku Toolbelt](https://toolbelt.heroku.com/):
+  - `$ heroku config:set NPM_CONFIG_PRODUCTION=false`
+2. Add a `postinstall` script to `package.json` which triggers `npm run build`. This will tell Heroku to run the build pipeline everytime during a deploy.
 
-This guideline refers to creating a new Heroku app from scratch.
+When configured correctly Heroku should kick off `npm start` at the end of the deployment which spins up the generated Express server. Your app should now be live.
 
-1. Create new app.
+### CircleCI
 
-2. ```.buildpacks``` should automatically set up the [Heroku buildpacks](https://devcenter.heroku.com/articles/buildpacks) for you upon deploy. If not, manually add the following (order matters):
-  - Ruby: ```$ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-ruby```
-  - Node.js: ```$ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-nodejs```
+This project comes with a `circle.yml` file with a pipeline set up for deploying to Heroku. With this set up, you no longer need to build your app on Heroku. Instead, CircleCI will build the app and only deploy runtime files to your Heroku instance (which means you don't need the Ruby buildpack at all). Note that you must grant CircleCI permission to interact with your Heroku instance. See their [guide](https://circleci.com/docs/continuous-deployment-with-heroku/).
 
-3. Allow the Node.js buildpack to install ```devDependencies```:
-  - ```$ heroku config:set NPM_CONFIG_PRODUCTION=false```
+### CDN
 
-4. Push to Heroku (or link to GitHub for automatic deploy):
-  - ```$ git push heroku master```
+By default, during a CircleCI build, the pipeline will automatically prepend asset paths relative to root `/` in HTML/JS/CSS files with your CDN URL. To make this default behavior work the following requirements must be met:
 
-5. If order of buildpacks is set up correctly, the Ruby buildpack should act first to install gem dependencies (namely [Jekyll](http://jekyllrb.com)), then the Node.js buildpack which will install all dependencies defined in ```package.json``` and run the ```postinstall``` script on complete. The ```postinstall``` script kickstarts a ```gulp``` build.
+1. You are using CircleCI to build the app
+2. You are pushing changes at `master` (hence the environment variable `CIRCLE_BRANCH` is `master`)
+3. The environment variable `CDN_PATH` is set, starting with `//` and ending with no trailing `/` (i.e. `//xxxxxxxxxx.cloudfront.net`).
 
-6. When ```gulp``` is done, ```npm start``` will kickoff the ```start``` script in ```package.json```, which will do:
-  ```
-  $ node server.js
-  ```
-  This will serve the ```public``` directory in the port provided by Heroku or ```3000``` otherwise.
+## Environments
+
+Use the environment variable `NODE_ENV` to set environments. Available options are `development` and `production`. In `development`, Jekyll drafts are generated while asset compression and revisioning are disabled. Webpack also outputs more debug info (i.e. sourcemaps). Vice-versa for production.
+
+## Using External Libraries
+
+The best practice is to use NPM to manage all external JS/CSS libraries. If you must resort to the legacy `<script>` method, you can dump all your vendor files inside `app/_assets/vendor` and Webpack will automatically concat them into `public/assets/javascripts/vendor.js`, which should already be included in `index.html`. For CSS, since we have the convenience of Sass imports, use NPM.
 
 ## Tasks
 
-```gulp --debug --watch --serve```: Generates the Jekyll project, compiles all assets, serves the site and watches for file changes. Best used during development.
+`$ npm start`: Starts the generated simple Express server. This task only starts the server. It does not compile any assets.
 
-```gulp```: Builds the entire project in production.
+`$ npm test`: Runs user-defined tests defined in `/tests` recursively.
 
-All tasks are broken into micro-tasks, check out the ```tasks``` folder for more details. Also see ```tasks/.taskconfig``` for more custom flags such as ```--skip-js-min```, ```--skip-css-min```, etc.
+`$ npm run clean`: Cleans the `/public` directory.
+
+`$ npm run dev`: Runs the app in development using `BrowserSync` as the dev server. In this mode file watching and live reloading are enabled while asset compression is disabled, hence you should always use this command during development.
+
+`$ npm run prod`: Runs the app in production using the generated Express server. Assets are compiled, compressed, and hash-renamed.
+
+While the major tasks are wrapped in NPM scripts, you can check out the micro tasks in `gulpfile.babel.js`. To configure task behaviors, check out `.taskconfig`.
 
 ## Blogging
 
-For a user-friendly UI, use [prose.io](http://prose.io) to add/modify/remove blog posts as well as uploading required images. Note that in [prose.io](http://prose.io), any file/directory that is irrelevant to blogging will be hidden from the UI for security reasons. You can modify this inside ```_config.yml```.
+For a user-friendly UI, use [prose.io](http://prose.io) for free to add/modify/remove blog posts as well as uploading required images. By default, a `_prose.yml` file is generated to abstract away files that are irrelevant to blogging.
