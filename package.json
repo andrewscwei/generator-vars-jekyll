@@ -1,6 +1,6 @@
 {
   "name": "generator-vars-jekyll",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Generator for raw web app with CircleCI, Jekyll, Webpack, Express + more",
   "license": "MIT",
   "repository": {

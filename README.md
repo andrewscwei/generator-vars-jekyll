@@ -102,14 +102,6 @@ VARIANTE's Yeoman generator for a Jekyll-based web app.
 +-- server.js
 ```
 
-## Tasks
-
-```gulp --debug --watch --serve```: Generates the Jekyll project, compiles all assets, serves the site and watches for file changes. Best used during development.
-
-```gulp```: Builds the entire project in production.
-
-All tasks are broken into micro-tasks, check out the ```tasks``` folder for more details. Also see ```tasks/.taskconfig``` for more custom flags such as ```--skip-js-min```, ```--skip-css-min```, etc.
-
 ## Usage
 
 Install `yo` and `generator-vars-jekyll`:
