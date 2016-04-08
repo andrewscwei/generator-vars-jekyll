@@ -15,7 +15,7 @@ VARIANTE's Yeoman generator for a Jekyll-based web app.
 - [Heroku](http://heroku.com) integration
 - [CircleCI](https://circleci.com/) integration
 - CDN path remapping
-- [HTML5 boilerplate favicon template](https://drublic.de/archive/html5-boilerplate-favicons-psd-template/)
+- [H5BP favicon and app icon template](http://littlewebgiants.com/favicon-and-app-icon-template/)
 - Automatically manages and concats legacy JS libraries (i.e. `<script>`) in a designated folder
 
 ## Requirements
