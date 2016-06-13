@@ -3,8 +3,7 @@ machine:
     version: 5.6.0
 deployment:
   release:
-    tag: /release-.*/
-    owner: VARIANTE
+    tag: /^v(\d+\.)?(\d+\.)?(\*|\d+)$/
     commands:
       - chmod +x ./scripts/release.sh
       - ./scripts/release.sh

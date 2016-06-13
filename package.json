@@ -1,16 +1,16 @@
 {
   "name": "generator-vars-jekyll",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Generator for raw web app with CircleCI, Jekyll, Webpack, Express + more",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VARIANTE/generator-vars-jekyll"
+    "url": "https://github.com/andrewscwei/generator-vars-jekyll"
   },
   "author": {
     "name": "Andrew Wei <andrew@variante.io>"
   },
-  "homepage": "https://github.com/VARIANTE/generator-vars-jekyll#readme",
+  "homepage": "https://github.com/andrewscwei/generator-vars-jekyll#readme",
   "main": "app/index.js",
   "engines": {
     "node": ">=5.0.0"
@@ -26,7 +26,6 @@
     "jekyll",
     "gulp",
     "vars",
-    "variante",
     "sass",
     "babel",
     "webpack",

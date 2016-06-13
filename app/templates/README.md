@@ -1,6 +1,6 @@
 # <%= appname %>
 
-This app is scaffolded by [Yeoman](http://yeoman.io) using the generator [generator-vars-jekyll](https://github.com/VARIANTE/generator-vars-jekyll.git). 
+This app is scaffolded by [Yeoman](http://yeoman.io) using the generator [generator-vars-jekyll](https://github.com/andrewscwei/generator-vars-jekyll.git). 
 
 ## Setup
 

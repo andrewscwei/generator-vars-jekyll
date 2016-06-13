@@ -1,6 +1,6 @@
-# generator-vars-jekyll [![Circle CI](https://circleci.com/gh/VARIANTE/generator-vars-jekyll/tree/master.svg?style=svg)](https://circleci.com/gh/VARIANTE/generator-vars-jekyll/tree/master) [![npm version](https://badge.fury.io/js/generator-vars-jekyll.svg)](https://badge.fury.io/js/generator-vars-jekyll)
+# generator-vars-jekyll [![Circle CI](https://circleci.com/gh/andrewscwei/generator-vars-jekyll/tree/master.svg?style=svg)](https://circleci.com/gh/andrewscwei/generator-vars-jekyll/tree/master) [![npm version](https://badge.fury.io/js/generator-vars-jekyll.svg)](https://badge.fury.io/js/generator-vars-jekyll)
 
-VARIANTE's Yeoman generator for a Jekyll-based web app.
+Yeoman generator for a Jekyll-based web app.
 
 ## Features
 

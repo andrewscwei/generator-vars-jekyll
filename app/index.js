@@ -1,10 +1,4 @@
-/**
- * generator-vars-jekyll
- * (c) VARIANTE <http://variante.io>
- *
- * This software is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
- */
+// (c) Andrew Wei
 
 'use strict';
 
