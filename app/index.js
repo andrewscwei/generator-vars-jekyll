@@ -4,6 +4,7 @@
 
 const chalk = require('chalk');
 const fs = require('fs');
+const glob = require('glob');
 const path = require('path');
 const yeoman = require('yeoman-generator');
 const yosay = require('yosay');
@@ -50,7 +51,27 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function() {
-    this.templateDirectory();
+    let files = glob.sync('**', { dot: true, cwd: this.sourceRoot() });
+
+    for (let i = 0; i < files.length; i++) {
+      let f = files[i];
+      let src = path.join(this.sourceRoot(), f);
+      let basename = path.basename(f);
+
+      switch (basename) {
+        case '.DS_Store':
+          // Do nothing
+          break;
+        case 'gitignore':
+          this.template(src, path.join(path.dirname(f), `.${basename}`));
+          break;
+        default:
+          if (~['.png', '.jpg', '.ico'].indexOf(path.extname(basename)))
+            this.copy(src, path.join(path.dirname(f), basename));
+          else
+            this.template(src, path.join(path.dirname(f), basename));
+      }
+    }
   },
 
   install: {
@@ -82,21 +103,5 @@ module.exports = yeoman.Base.extend({
 
   end: function() {
     this.log(chalk.green('Finished generating app! See the generated ') + chalk.yellow('README.md') + chalk.green(' for more guidelines. To start developing right away, run: ') + chalk.yellow.bold('npm run dev'));
-  },
-
-  templateDirectory: function(source, destination) {
-    if (source === undefined) source = '';
-    if (destination === undefined) destination = '';
-
-    let root = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
-    let files = this.expandFiles('**', { dot: true, cwd: root });
-
-    for (let i = 0; i < files.length; i++) {
-      let f = files[i];
-      let src = path.join(root, f);
-      let dest = path.join(destination, path.dirname(f), path.basename(f));
-
-      if (path.basename(f) !== '.DS_Store') this.template(src, dest);
-    }
   }
 });
