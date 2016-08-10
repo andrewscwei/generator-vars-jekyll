@@ -91,9 +91,6 @@ export default {
       root: [
         path.join(sourceDir, '_assets', 'javascripts'),
         path.join(sourceDir, '_data')
-      ],
-      modulesDirectories: [
-        modulesDir
       ]
     },
     plugins: [new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')].concat(env.debug ? [] : [
