@@ -9,7 +9,7 @@
     "test": "mocha tests --recursive --reporter spec",
     "clean": "rimraf public",
     "build": "npm run clean && bundle exec jekyll build --verbose && gulp",
-    "dev": "npm run clean && bundle exec jekyll build --drafts --verbose --watch & NODE_ENV=development gulp --watch & browser-sync start --server=public --files=public/**/*.{html,js,css,jpg,jpeg,gif,png,svg,ogv,mp4} --no-open --no-notify --logLevel=info --port=${PORT:-3000}",
+    "dev": "npm run clean && (bundle exec jekyll build --drafts --verbose --watch & NODE_ENV=development gulp --watch & browser-sync start --server=public --files=public/**/*.{html,js,css,jpg,jpeg,gif,png,svg,ogv,mp4} --no-open --no-notify --logLevel=info --port=${PORT:-3000})",
     "prod": "export NODE_ENV=production && npm run build && npm start"
   },
   "engines": {
