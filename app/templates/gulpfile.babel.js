@@ -117,7 +117,7 @@ gulp.task('rev', (callback) => {
       const manifestFile = path.join(config.rev.output, config.rev.manifestFile);
       const manifest = require(manifestFile);
       let removables = [];
-      let pattern = (_.keys(manifest)).join('|');
+      let pattern = _.map(_.keys(manifest), v => (`${v}\\b`)).join('|');
 
       for (let v in manifest) {
         if (v !== manifest[v]) removables.push(path.join(config.rev.output, v));
