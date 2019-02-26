@@ -144,7 +144,3 @@ For details on initial setup procedures of the project, see its generated ```REA
 6. Ruby version from `2.0.0` to `2.2.1`.
 7. Minor syntactic sugar changes.
 8. Lots of optimizations, particularly boosting the efficiency of automated rebuilds during development.
-
-## License
-
-This software is released under the [MIT License](http://opensource.org/licenses/MIT).
